@@ -5,7 +5,7 @@ import "./TagsContainer.css";
 import GlobalContext from "../../../Context/GlobalContext";
 
 const TagsContainer = () => {
-  const { filterTags, RemoveTag, ClearTags } = useContext(GlobalContext);
+  const { filterTags, dispatch } = useContext(GlobalContext);
 
   return (
     <div className="tags_container">
@@ -18,14 +18,17 @@ const TagsContainer = () => {
                 src={removeIcon}
                 alt="remove"
                 className="remove_icon"
-                onClick={() => RemoveTag(tag)}
+                onClick={() => dispatch({ type: "REMOVE_TAG", tag })}
               />
             </div>
           );
         })}
       </div>
       <div className="tags_container_right">
-        <button className="clear_btn" onClick={() => ClearTags()}>
+        <button
+          className="clear_btn"
+          onClick={() => dispatch({ type: "CLEAR_TAGS" })}
+        >
           Clear
         </button>
       </div>

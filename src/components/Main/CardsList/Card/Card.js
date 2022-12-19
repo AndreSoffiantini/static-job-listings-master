@@ -4,11 +4,10 @@ import classnames from "classnames";
 import "./Card.css";
 
 const Card = ({ details, show }) => {
-  const { filterTags, AddTag, RemoveTag, ClearTags } =
-    useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
 
   return (
-    <li className={classnames("card", { visible: show })} key={details.id}>
+    <li className="card" key={details.id}>
       <h4>{details.company}</h4>
       <h4>{details.position}</h4>
       <ul className="time_location_details">
@@ -23,7 +22,11 @@ const Card = ({ details, show }) => {
       </ul>
       <hr></hr>
       {details.tags.map((tag) => {
-        return <button onClick={() => AddTag(tag)}>{tag}</button>;
+        return (
+          <button onClick={() => dispatch({ type: "ADD_TAG", tag })}>
+            {tag}
+          </button>
+        );
       })}
     </li>
   );

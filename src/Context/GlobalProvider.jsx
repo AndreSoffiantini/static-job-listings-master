@@ -1,33 +1,17 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import GlobalContext from "./GlobalContext";
+import GlobalReducer from "./GlobalReducer";
 
-const GlobalProvider = (props) => {
-  const [filterTags, setFilterTags] = useState([]);
-
-  const AddTag = (tag) => {
-    if (!filterTags.includes(tag)) {
-      setFilterTags([...filterTags, tag]);
-    }
-  };
-  const RemoveTag = (key) => {
-    const newTag = filterTags.filter((tag) => tag !== key);
-    setFilterTags(newTag);
+const GlobalProvider = ({ children }) => {
+  const initialState = {
+    filterTags: [],
   };
 
-  const ClearTags = () => {
-    setFilterTags([]);
-  };
-
-  const tagsContext = {
-    filterTags,
-    AddTag,
-    RemoveTag,
-    ClearTags,
-  };
+  const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
   return (
-    <GlobalContext.Provider value={tagsContext}>
-      {props.children}
+    <GlobalContext.Provider value={{ dispatch, filterTags: state.filterTags }}>
+      {children}
     </GlobalContext.Provider>
   );
 };
