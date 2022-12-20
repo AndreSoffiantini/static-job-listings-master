@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import removeIcon from "../../../images/icon-remove.svg";
+import classnames from "classnames";
 import "./TagsContainer.css";
 
 import GlobalContext from "../../../Context/GlobalContext";
@@ -8,14 +8,16 @@ const TagsContainer = () => {
   const { filterTags, dispatch } = useContext(GlobalContext);
 
   return (
-    <div className="tags_container">
+    <div
+      className={classnames("tags_container", { hide: !filterTags?.length })}
+    >
       <div className="tags_container_left">
         {filterTags?.map((tag) => {
           return (
             <div key={tag + " header button"} className="tag">
               <div>{tag}</div>
               <img
-                src={removeIcon}
+                src="./images/icon-remove.svg"
                 alt="remove"
                 className="remove_icon"
                 onClick={() => dispatch({ type: "REMOVE_TAG", tag })}

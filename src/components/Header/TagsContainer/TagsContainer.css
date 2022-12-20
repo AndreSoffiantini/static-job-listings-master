@@ -1,6 +1,7 @@
 .tags_container {
-  min-height: 50px;
+  min-height: 105px;
   width: 90%;
+  max-width: 1100px;
   background-color: white;
   border-radius: 0.5rem;
   position: absolute;
@@ -37,6 +38,7 @@
 .tags_container_left {
   width: 80%;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   row-gap: 15px;
 }
@@ -50,4 +52,15 @@
 
 .tags_container_right > button {
   color: var(--dark-grayish-cyan);
+}
+
+@media screen and (min-width: 1000px) {
+  .tags_container {
+    min-height: 50px;
+    padding: 1rem 2.5rem;
+  }
+
+  .tags_container_right {
+    justify-content: end;
+  }
 }

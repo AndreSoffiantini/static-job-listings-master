@@ -4,8 +4,9 @@ const GlobalReducer = (state, action) => {
       if (!state.filterTags.includes(action.tag)) {
         const newFilterTags = [...state.filterTags, action.tag];
         return { ...state, filterTags: newFilterTags };
+      } else {
+        return { ...state };
       }
-      break;
 
     case "REMOVE_TAG":
       const newFilterTags = state.filterTags.filter(
