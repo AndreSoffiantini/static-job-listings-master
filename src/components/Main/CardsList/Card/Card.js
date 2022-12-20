@@ -37,7 +37,7 @@ const Card = ({ details }) => {
                 Featured
               </div>
             </div>
-            <h4 style={{ margin: "0.75rem 0" }}>{details.position}</h4>
+            <h3 style={{ margin: "0.75rem 0" }}>{details.position}</h3>
 
             <ul className="time_location_details">
               <li

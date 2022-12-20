@@ -17,12 +17,14 @@
 
 body {
   font-family: "League Spartan", sans-serif;
+  background-color: var(--light-grayish-cyan-background);
 }
 
 button {
   border: none;
   background-color: white;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .hide {
