@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import removeIcon from "../../../images/icon-close.svg";
+import removeIcon from "../../../images/icon-remove.svg";
 import "./TagsContainer.css";
 
 import GlobalContext from "../../../Context/GlobalContext";
@@ -12,7 +12,7 @@ const TagsContainer = () => {
       <div className="tags_container_left">
         {filterTags?.map((tag) => {
           return (
-            <div className="tag">
+            <div key={tag + " header button"} className="tag">
               <div>{tag}</div>
               <img
                 src={removeIcon}

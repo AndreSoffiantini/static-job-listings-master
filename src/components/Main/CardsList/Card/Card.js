@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import GlobalContext from "../../../../Context/GlobalContext";
-import classnames from "classnames";
 import "./Card.css";
 
 const Card = ({ details, show }) => {
@@ -23,7 +22,10 @@ const Card = ({ details, show }) => {
       <hr></hr>
       {details.tags.map((tag) => {
         return (
-          <button onClick={() => dispatch({ type: "ADD_TAG", tag })}>
+          <button
+            key={tag + " button"}
+            onClick={() => dispatch({ type: "ADD_TAG", tag })}
+          >
             {tag}
           </button>
         );
